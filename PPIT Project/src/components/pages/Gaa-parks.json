@@ -1,0 +1,35 @@
+{
+    "pitches":[
+        {"name":"St James GAA Club",
+        "position":[53.283246,-9.014071]
+    },
+    {"name":"Pearse Stadium",
+        "position":[53.263145,-9.083997]
+    },
+    {"name":"St Michaels GAA Club",
+        "position":[53.274953,-9.080157]
+        
+    },
+    {"name":"Castlegar GAA Club",
+        "position":[53.276422,-8.977357]
+    },
+    {"name":"Liam Mellows GAA Club",
+        "position":[53.270891,-9.022859]
+    },
+    {"name":"",
+        "position":[0,0]
+    },
+    {"name":"",
+        "position":[0,0]
+    },
+    {"name":"",
+        "position":[0,0]
+    },
+    {"name":"",
+        "position":[0,0]
+    },{"name":"",
+        "position":[0,0]
+    }
+    
+    ]
+}
