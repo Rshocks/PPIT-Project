@@ -26,7 +26,7 @@ const closeMobileMenu = () => setClick(false);
                     </Link>
                 </li>
             <li className='nav-item'>
-                    <Link to='/read' className='nav-links' onClick={closeMobileMenu}>
+                    <Link to='/Results' className='nav-links' onClick={closeMobileMenu}>
                         Results
                     </Link>
                 </li>

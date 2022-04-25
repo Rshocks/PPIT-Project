@@ -27,17 +27,19 @@ class StoryItem extends Component {
         return (
             <div>
                 <Card>
-                    <Card.Header>{this.props.story.Title}</Card.Header>
+                    <Card.Header>{this.props.story.Story}</Card.Header>
                     <Card.Body>
                         <blockquote>
                             <footer>
-                                {this.props.story.Story}
+                                {this.props.story.Title}
                             </footer>
                         </blockquote>
-                        <Card.Header>{this.props.story.Author}</Card.Header>
+                        <blockquote>
+                            <footer>
+                                {this.props.story.Author}
+                            </footer>
+                        </blockquote>
                     </Card.Body>
-                    <Link to={"/edit/"+ this.props.story._id} className="btn">Edit Results</Link>
-                    <br />
                     <Button className="btn" onClick={this.DeleteStory}>Delete Results</Button>
                 </Card>
             </div>
