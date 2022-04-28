@@ -1,95 +1,107 @@
 const express = require('express')
 const app = express()
-const port = 4000
+const port = 4001
+const cors = require('cors');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-const path = require('path');
 
-//from express docs
-//leading it to the build folder as well as the static folder config lines
-app.use(express.static(path.join(__dirname,'../build')));
-app.use('/static', express.static(path.join(__dirname,'build/static')));
-
-
-app.use(bodyParser.urlencoded({extended: false}))
-app.use(bodyParser.json())
-
-const ConnectionString ='mongodb+srv://admin:admin@cluster0.eo9g2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
-mongoose.connect(ConnectionString, {useNewUrlParser: true});
-  
-
-const Schema = mongoose.Schema;
-
-var storySchema = new Schema({
-    Title:String,
-    Author:String,
-    Story:String
+app.use(cors());
+app.use(function(req, res, next) {
+res.header("Access-Control-Allow-Origin", "*");
+res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+res.header("Access-Control-Allow-Headers",
+"Origin, X-Requested-With, Content-Type, Accept");
+next();
 });
 
-var StoryModel = mongoose.model("story", storySchema)
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
 
-app.get('/api/story', (req, res)=>{
+// parse application/json
+app.use(bodyParser.json())
 
-    StoryModel.find((err, data)=>{
-        res.json(data); //sending back json from storymodel
-    })
+const mongoose = require('mongoose');
 
+const strConnection = 'mongodb+srv://admin:admin@cluster0.eo9g2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+
+main().catch(err => console.log(err));
+
+async function main() {
+  await mongoose.connect(strConnection);
+}
+
+const playerSchema = new mongoose.Schema({
+    Name:String,
+    Goals:String,
+    Passes:String,
+    Score:String
+});
+
+const playerModel = mongoose.model('playerData', playerSchema);
+
+
+app.get('/', (req, res) => {
+    res.send('Server is running ')
 })
 
-//IMPORTANT search for id maybe for search bar
-app.get('/api/story/:id', (req,res)=>{
-    console.log(req.params.id)
-
-    StoryModel.findById(req.params.id, (err, data)=>{
-        res.json(data)
-    })
-})
-
-app.put('/api/story/:id', (req,res)=>{
-    console.log("Update Story " + req.params.id)
+app.post('/api/players', (req,res)=>{
     console.log(req.body);
+    console.log(req.body.Name);
+    console.log(req.body.Goals);
+    console.log(req.body.Passes);
+    console.log(req.body.Score);
 
-    StoryModel.findByIdAndUpdate(req.params.id,req.body, {new:true},
-        (err,data)=>{
-            res.send(data)
-        })
-        .catch((err)=>{
-            console.log(err)
-        })
+    playerModel.create({
+        Name:req.body.Name,
+        Goals:req.body.Goals,
+        Passes:req.body.Passes,
+        Score:req.body.Score
+    });
+    res.send('Data Sent to Server!')
 })
 
-app.post('/api/story', (req, res)=>{
-    console.log('Story Recieved');
-    console.log(req.body.Title);
-    console.log(req.body.Author);
-    console.log(req.body.Story);
+app.get('/api/players/:id',(req, res)=>{
+    console.log(req.params.id);
 
-    StoryModel.create({
-        Title:req.body.Title,
-        Author:req.body.Author,
-        Story:req.body.Story
+    playerModel.findById(req.params.id,(error,data)=>{
+        res.json(data);
     })
-
-    res.send('Item Added')
 })
 
-app.delete('api/story/:id',(req,res)=>{
-    console.log("Delete Story: "+ req.params.id);
+app.delete('/api/players/:id', (req, res)=>{
+    console.log('Deleteing : '+req.params.id);
 
-    StoryModel.deleteOne({_id:req.params.id},
+    playerModel.deleteOne({_id:req.params.id},
         (error, data)=>{
             if(error)
                 res.send(error)
-            res.send(data)
+            res.send(data);
         })
 })
 
-//send index.html file back
-//by using * sends all frontend 
-app.get('*', (req,res)=>{
-    res.sendFile(path.join(__dirname+'../build/index.html'))
+app.put('/api/players/:id',(req, res)=>{
+    console.log('update');
+    console.log(req.body);
+    console.log("Updating: " + req.params.id);
+
+    playerModel.findByIdAndUpdate(req.params.id, req.body, {new:true},
+        (err,data)=>{
+            res.send(data);
+        })
+
 })
 
+
+
+app.get('/api/players', (req, res) => {
+    playerModel.find((err, data)=>{
+        res.json(data);
+    })
+          
+      
+})
+
+
+
 app.listen(port, () => {
-  console.log(`App listening at http://localhost:${port}`)
+    console.log(`Example app listening at http://localhost:${port}`)
 })

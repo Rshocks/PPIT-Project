@@ -4,11 +4,11 @@ import './App.css';
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Contact from './components/pages/Contact'
-import Results from './components/pages/Results'
-import Write from './components/pages/Write'
+import  Add  from './components/pages/add';
+import  Display  from './components/pages/display';
+import  Update  from './components/pages/update';
 import GPS from './components/pages/GPS'
 import home from './components/pages/Home';
-import Edit from './components/pages/Edit';
 import QR from './components/pages/QR'
 
 class App extends Component{
@@ -21,10 +21,11 @@ render() {
       <Route path='/' exact component={home}/>
         <Route path='/QR' exact component={QR}/>
         <Route path='/contact' exact component={Contact}/>
-        <Route path='/Results' exact component={Results}/>
-        <Route path='/write' exact component={Write}/>
+        <Route path='/add'> <Add /></Route>
+        <Route path='/display'><Display/></Route>
+        <Route path="/update/:id" component={Update}></Route>
         <Route path='/GPS' exact component={GPS}/>
-        <Route path='/edit/:id' exact component={Edit}/>
+        
       </Switch>
     </Router>
     );

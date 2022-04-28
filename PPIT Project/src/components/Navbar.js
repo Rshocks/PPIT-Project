@@ -14,7 +14,7 @@ const closeMobileMenu = () => setClick(false);
         <>
         <nav className='navbar'>
             <Link to='/QR' className='navbar-logo'>
-            GAA Tracker <i class='fab fa-firstdraft'/>
+            Cén Scór<i class='fab fa-firstdraft'/>
             </Link>
             <div className='menu-icon' onClick={handleClick}>
                 <i className={click ? 'fas fa-times': 'fas fa-bars'} />
@@ -26,12 +26,12 @@ const closeMobileMenu = () => setClick(false);
                     </Link>
                 </li>
             <li className='nav-item'>
-                    <Link to='/Results' className='nav-links' onClick={closeMobileMenu}>
-                        Results
+                    <Link to='/display' className='nav-links' onClick={closeMobileMenu}>
+                        Matches
                     </Link>
                 </li>
                 <li className='nav-item'>
-                    <Link to='/write' className='nav-links' onClick={closeMobileMenu}>
+                    <Link to='/add' className='nav-links' onClick={closeMobileMenu}>
                         REF
                     </Link>
                 </li>
