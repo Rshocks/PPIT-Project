@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Players from './players';
 import axios from 'axios';
+import '../../App.css';
 
 class Display extends Component {
 

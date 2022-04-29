@@ -33,8 +33,9 @@ class Player extends Component {
                         {this.props.player.Passes}                          
                         </blockquote>
                     </Card.Body>
-<Link to={"/update/" +this.props.player._id} className="btn btn-primary">Ref Match</Link>
-<Button variant="danger" onClick={this.DeletePlayer}>Remove Match</Button>
+                    <Link to={"/update/" +this.props.player._id} className="btn btn-primary">Update Match</Link>
+                    <br></br>
+                    <Button variant="danger" onClick={this.DeletePlayer}>Remove Match</Button>
                 </Card>
             </div>
         );

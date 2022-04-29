@@ -1,44 +1,45 @@
-
-import '../../App.css';
-import React, { Component } from 'react'
+import React, {useState} from 'react'
+import {Fab, TextareaAutosize} from '@material-ui/core'
 import QrReader from 'react-qr-scanner'
- 
-          class Qr extends Component {
-          constructor(props){
-            super(props)
-            this.state = {
-              delay: 100,
-              result: 'No result',
-            }
-        
-            this.handleScan = this.handleScan.bind(this)
-          }
-          handleScan(data){
-            this.setState({
-              result: data,
-            })
-          }
-          handleError(err){
-            console.error(err)
-          }
-          render(){
-            const previewStyle = {
-              height: 240,
-              width: 320,
-            }
-        
-            return(
-              <div>
-                <QrReader
-                  delay={this.state.delay}
-                  style={previewStyle}
-                  onError={this.handleError}
-                  onScan={this.handleScan}
-                  />
-                <p>{this.state.result}</p>
-              </div>
-            )
-          }
+import '../../App.css';
+
+function QR() {
+
+    const [qrscan, setQrscan] = useState('No result');
+    const handleScan = data => {
+        if (data) {
+            setQrscan(data)
         }
-        
-export default Qr;
+    }
+    const handleError = err => {
+    console.error(err)
+    }
+
+    return (
+      <div>
+            <span>QR Scanner</span>
+            
+            <center>
+            <div style={{marginTop:30}}>
+                <QrReader
+                    delay={300}
+                    onError={handleError}
+                    onScan={handleScan}
+                    style={{ height: 240, width: 320 }}
+                />
+            </div>
+            </center>
+
+            <TextareaAutosize
+                style={{fontSize:18, width:320, height:100, marginTop:100}}
+                rowsMax={4}
+                defaultValue={qrscan}
+                value={qrscan}
+            />
+
+      </div>
+    );
+  }
+  
+  export default QR;
+  

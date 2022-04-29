@@ -16,19 +16,36 @@
     {"name":"Liam Mellows GAA Club",
         "position":[53.270891,-9.022859]
     },
-    {"name":"",
-        "position":[0,0]
+    {"name":"Oranmore-Maree GAA Club",
+        "position":[53.2721171129391,-8.920383453369142]
     },
-    {"name":"",
-        "position":[0,0]
+    {"name":"Carnmore GAA",
+        "position":[53.304826230719286,-8.904075622558596]
+
     },
-    {"name":"",
-        "position":[0,0]
+    {"name":"Spiddal GAA",
+        "position":[53.24575202772201,-9.302179813385012]
+
     },
-    {"name":"",
-        "position":[0,0]
-    },{"name":"",
-        "position":[0,0]
+    {"name":"Tuam Stars GAA",
+        "position":[53.5079575533589,-8.836848735809328]
+
+    },{"name":"Mountbellew GAA",
+        "position":[53.47382058980715,-8.505177497863771]
+    }
+    ,{"name":"Kenny Park",
+        "position":[53.295824100897036,-8.750095367431642]
+    },
+    {"name":"Monivea Abbey GAA",
+        "position":[53.377082187864424,-8.70048522949219]
+    }
+    ,
+    {"name":"Caltra GAA",
+        "position":[53.436844083136414,-8.437328338623049]
+    }
+    ,
+    {"name":"Oughterard GAA",
+        "position":[53.42861134440213,-9.314818382263185]
     }
     
     ]

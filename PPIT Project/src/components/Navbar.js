@@ -32,7 +32,7 @@ const closeMobileMenu = () => setClick(false);
                 </li>
                 <li className='nav-item'>
                     <Link to='/add' className='nav-links' onClick={closeMobileMenu}>
-                        REF
+                        Referee
                     </Link>
                 </li>
                 <li className='nav-item'>

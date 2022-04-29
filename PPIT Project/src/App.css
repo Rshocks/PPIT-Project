@@ -7,10 +7,12 @@
 
 .home,
 .contact,
-.read,
-.write,
-.sign-up
+.Display,
+.Add,
+.QR,
+.GPS
 {
+  background : black;
   display: flex;
   height: 90vh;
   align-items: center;
@@ -28,7 +30,7 @@
 }
 
 .home{
-  background-image: url('./images/img2.jpg');
+  background-image: url('./images/img4.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
