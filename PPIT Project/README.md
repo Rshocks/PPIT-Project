@@ -4,6 +4,8 @@ Step 1 - Use command git clone into a folder of your choice in terminal
 
 Step 2 - Use command npm install where the repo has been cloned
 
+Alt Step 2 - Use command npm install --legacy-peer-deps if step 2 doesn't work
+
 Step 3 - Use command code . to open VS Code
 
 Step 4 - Click BackEnd in VS Code, then right click server.js & open intergrated terminal
